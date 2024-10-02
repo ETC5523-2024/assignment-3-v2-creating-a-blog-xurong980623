@@ -2,39 +2,58 @@
 
 /* Custom background color for the navbar */
 .navbar-dark, .quarto-title-banner {
-  background-color: #006DAE; /* A blue color for the navbar and banner */
+  background-color: #FF6F61; /* Bright coral color for a vibrant navbar and banner */
 }
 
 /* Font color for headings */
 h1, h2, h3, h4, h5, h6 {
-  color: #2E4053; /* Dark shade of blue for headings */
+  color: #2E8B57; /* Sea green for headings to contrast with the coral */
 }
 
 /* Customize the body background */
 body {
-  background-color: #f5f5f5; /* Light gray background for readability */
+  background-color: #FFF8DC; /* Light beige background for warmth and readability */
 }
 
 /* Customize link color */
 a {
-  color: #006DAE; /* Same blue color as the navbar for consistency */
+  color: #FF6347; /* Tomato red for links to add vibrancy */
 }
 
 a:hover {
-  color: #00507E; /* Darker blue for hover effect */
+  color: #FF4500; /* Darker orange-red for a bold hover effect */
 }
 
 /* Footer styling */
 .footer {
-  background-color: #006DAE; /* Matching footer color with navbar */
+  background-color: #FF6F61; /* Matching footer color with navbar */
   color: white;
   text-align: center;
-  padding: 10px;
+  padding: 15px; /* Increased padding for a larger footer */
+  font-size: 14px; /* Slightly larger font for readability */
 }
 
 /* Customize code blocks */
 pre {
-  background-color: #f0f0f0;
-  border-left: 5px solid #006DAE; /* Highlight left border of code block */
-  padding: 10px;
+  background-color: #F0E68C; /* Khaki background for a fun, energetic vibe */
+  border-left: 5px solid #FF6347; /* Vibrant border to match link color */
+  padding: 12px;
+  border-radius: 5px; /* Rounded corners for a softer appearance */
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #32CD32; /* Lime green for a fresh, eye-catching button */
+  border-color: #228B22; /* Darker green for border */
+}
+
+.btn-primary:hover {
+  background-color: #228B22; /* Dark green for hover effect */
+  border-color: #006400; /* Even darker green for the border on hover */
+}
+
+/* Add box shadow to images */
+img {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adds a soft shadow to images */
+  border-radius: 8px; /* Rounded corners for images */
 }

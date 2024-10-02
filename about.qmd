@@ -1,8 +1,8 @@
 ---
-title: "About Me"
+title: "Rong Xu"
 image: profile.jpg  
 about:
-  template: jolla  
+  template: trestles  
   links:
     - icon: github
       text: Github
@@ -15,16 +15,15 @@ about:
       href: https://x.com/SharonXu9823  
 ---
 
-## Hi, I'm [Sharon Xu]
+## Hi, I'm Rong Xu
 
-I’m a passionate data scientist and currently pursuing my degree in **Business Analytics** at Monash University. My focus is on using data to solve complex real-world problems, particularly in the areas of machine learning, time series analysis, and data visualization. I have experience in:
+I’m a passionate data explorer and currently pursuing my degree in **Business Analytics** at Monash University. My focus is on using data to solve complex real-world problems, especially in the fields of finance, nature, the healthcare industry. I have interest and some experience in:
 
 - **R programming** and data wrangling
-- **Predictive modeling** using machine learning techniques
 - **Time series analysis** and forecasting
 - **Data visualization** with ggplot2 and interactive dashboards
 
-When I'm not coding, I enjoy exploring new tech trends, reading, and contributing to open-source projects. Feel free to check out my projects on GitHub or connect with me on LinkedIn.
+When I'm not coding, I enjoy exploring new tech trends, reading, and explore the nature. Feel free to check out my projects on GitHub or connect with me on LinkedIn.
 
 ---
 
@@ -37,10 +36,4 @@ You can find me on:
 - **Twitter**: [My Twitter Handle](https://x.com/SharonXu9823)
 
 
-
-## Biography
-
-Hello! My name is Rong Xu, and I am currently studying Business Analytics at Monash University. I am passionate about data science, machine learning, and how we can use data to drive impactful decision-making. I am originally from China, and I enjoy working on projects related to data visualization, air quality, and more.
-
-In my free time, I love exploring new technologies, reading, and learning new skills. You can find some of my personal projects on my GitHub, or connect with me on LinkedIn.
 
