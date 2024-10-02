@@ -1,12 +1,263 @@
 ---
-title: "Welcome To My Blog Template"
-author: "Emi Tanaka"
-date: "2022-07-18"
+title: "Global Electric Vehicle (EV) Sales Trends"
+author: "Rong Xu"
+date: "2024-10-1"
 categories: [news]
 ---
 
 This is the first post in a Quarto blog. Welcome!
 
 ![](thumbnail.jpg)
+```{r setup, include = FALSE,message=FALSE,warning=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  eval = TRUE,
+  message=FALSE,
+  warning=FALSE,
+  out.width = "80%"
+)
+```
 
+```{r library packages}
+library(readr)
+library(tidyverse)
+library(ggplot2)
+library(kableExtra)
+library(gridExtra)
+library(grid)
+```
+
+# Problem Description
+
+Electric vehicles (EVs) are a major part of the global effort to reduce greenhouse gas emissions and transition to cleaner energy. However, understanding the market dynamics—such as which regions and powertrain types are driving EV adoption—is crucial for stakeholders. This blog post provides an analysis of EV sales data from 2010 to 2024, revealing key trends and patterns in regional adoption and preferences for different EV powertrain types.
+
+# Data Description
+
+## Data Source: 
+The data used for this analysis is sourced from [website](https://www.kaggle.com/datasets/patricklford/global-ev-sales-2010-2024/data).This dataset provides a comprehensive overview of EV sales across different regions,powertrains and time periods.I custom region grouping that aggregates countries into broader regions for clearer analysis.Further more,in the stacked bar chart below, future sales data is flagged as "Predicted" and displayed with reduced opacity, highlighting the distinction between historical and forecasted data.
+
+## Variables in the Dataset
+
+The dataset includes several variables that track EV sales across different regions and vehicle types:
+
+- Year: Year of EV sales.
+- Category: Historical vs predicted sales figures.
+- Paramater: include 4 categories: EV sales,EV sales share,EV stock,EV stock share.
+- Region: Countries where sales occurred.
+- Powertrain: Type of electric vehicle (BEV, PHEV, FCEV).
+- Value: Number of sales sold in a given year and region.
+
+## Data Cleaning Steps
+
+To ensure the quality and accuracy of the analysis, several data cleaning steps were performed:
+
+- Region Grouping: Countries were aggregated into broader regions to simplify analysis and visualize patterns more clearly (e.g., combining the USA, Canada, and Mexico into "North America").
+
+- Handling Missing or Invalid Data: Rows with missing or invalid values were removed. For predicted sales, a flag was added to differentiate forecasted data from actual sales figures.
+
+- Ensuring Consistency in Year Formats: The year variable was converted to a numeric format for accurate filtering and comparison, and then back to a factor for visualization purposes.
+```{r echo=TRUE}
+# Load the dataset
+ev_data <- read_csv("data/IEA Global EV Data 2024.csv")
+
+# Define region groups
+region_mapping <- function(region) {
+  if (region %in% c("USA", "Canada", "Mexico")) {
+    return("North America")
+  } else if (region %in% c("Brazil", "Argentina", "Chile", "Colombia", "Peru")) {
+    return("South America")
+  } else if (region == "China") {
+    return("China")
+  } else if (region %in% c("UK", "United Kingdom")) {
+    return("UK")
+  } else if (region %in% c("Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Sweden", "Norway", "Finland", "Denmark", "Switzerland", "Austria", "Ireland", "Portugal", "Greece", "Luxembourg", "Poland", "Czech Republic", "Hungary", "Slovakia", "Slovenia")) {
+    return("Europe")
+  } else if (region %in% c("Australia", "New Zealand")) {
+    return("Australia")
+  } else if (region %in% c("Bulgaria", "Costa Rica", "Croatia", "Cyprus", "Estonia", "Iceland", "India", "Indonesia", "Israel", "Japan", "Korea", "Latvia", "Lithuania", "Romania", "Seychelles", "South Africa", "Thailand", "Turkiye", "United Arab Emirates")) {
+    return("Other")
+  } else if (region == "World") {
+    return("World")
+  } else {
+    return(NA)
+  }
+}
+
+# Apply region groups to the dataset and filter out NAs
+ev_data <- ev_data %>%
+  mutate(Grouped_Region = sapply(region, region_mapping)) %>%
+  filter(!is.na(Grouped_Region))
+
+# Convert 'year' to numeric for comparison and back to factor for plotting
+ev_data <- ev_data %>%
+  mutate(year = as.numeric(as.character(year)))
+
+# Create a summary table of the grouped regions and their countries
+grouped_regions_summary <- ev_data %>%
+  distinct(region, Grouped_Region) %>%
+  group_by(Grouped_Region) %>%
+  summarize(Countries = paste(unique(region), collapse = ", ")) %>%
+  ungroup()
+
+```
+
+# Analysis
+
+## EV Sales Over Time by Grouped Region
+```{r}
+#| label: fig-stack-barchart
+#| fig-cap: EV Sales Over Time by Grouped Region
+# Load the dataset
+ev_data <- read_csv("data/IEA Global EV Data 2024.csv")
+
+# Define region groups
+region_mapping <- function(region) {
+  if (region %in% c("USA", "Canada", "Mexico")) {
+    return("North America")
+  } else if (region %in% c("Brazil", "Argentina", "Chile", "Colombia", "Peru")) {
+    return("South America")
+  } else if (region == "China") {
+    return("China")
+  } else if (region %in% c("UK", "United Kingdom")) {
+    return("UK")
+  } else if (region %in% c("Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Sweden", "Norway", "Finland", "Denmark", "Switzerland", "Austria", "Ireland", "Portugal", "Greece", "Luxembourg", "Poland", "Czech Republic", "Hungary", "Slovakia", "Slovenia")) {
+    return("Europe")
+  } else if (region %in% c("Australia", "New Zealand")) {
+    return("Australia")
+  } else if (region %in% c("Bulgaria", "Costa Rica", "Croatia", "Cyprus", "Estonia", "Iceland", "India", "Indonesia", "Israel", "Japan", "Korea", "Latvia", "Lithuania", "Romania", "Seychelles", "South Africa", "Thailand", "Turkiye", "United Arab Emirates")) {
+    return("Other")
+  } else if (region == "World") {
+    return("World")
+  } else {
+    return(NA)
+  }
+}
+
+# Apply region groups to the dataset and filter out NAs
+ev_data <- ev_data %>%
+  mutate(Grouped_Region = sapply(region, region_mapping)) %>%
+  filter(!is.na(Grouped_Region))
+
+# Convert 'year' to numeric for comparison and back to factor for plotting
+ev_data <- ev_data %>%
+  mutate(year = as.numeric(as.character(year)))
+
+# Create a summary table of the grouped regions and their countries
+grouped_regions_summary <- ev_data %>%
+  distinct(region, Grouped_Region) %>%
+  group_by(Grouped_Region) %>%
+  summarize(Countries = paste(unique(region), collapse = ", ")) %>%
+  ungroup()
+
+# Create stacked bar plot for EV sales over time
+ev_sales_stacked_plot <- ev_data %>%
+  filter(parameter == "EV sales", Grouped_Region != "World") %>%  # Corrected filter condition
+  mutate(prediction_flag = ifelse(year > 2023, "Predicted", "Actual")) %>%
+  mutate(year = as.factor(year)) %>%
+  ggplot(aes(x = year, y = value, fill = Grouped_Region)) +
+  geom_bar(stat = "identity", position = "stack", aes(alpha = prediction_flag)) +
+  scale_fill_brewer(palette = "Set1") +
+  scale_alpha_manual(values = c("Actual" = 1, "Predicted" = 0.5), guide = guide_legend(title = "Prediction")) +
+  labs(title = "EV Sales Over Time by Grouped Region",
+       x = "Year",
+       y = "Number of EV Sales") +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Plot the stacked bar chart
+print(ev_sales_stacked_plot)
+
+
+```
+
+From @fig-stack-barchart, we can find that the sales of EVs have shown a substantial increase globally since 2010, with a sharp uptick starting around 2018. China has consistently led the market, followed by North America and Europe. This growth is primarily driven by government incentives, advancements in EV technology, and increased environmental awareness among consumers.
+
+## Worldwide Distribution of EV Sales by Powertrain Type
+```{r}
+#| label: fig-barchart
+#| fig-cap: Worldwide Distribution of EV Sales by Powertrain Type
+# Prepare data for the chart
+ev_sales_world_data <- ev_data %>%
+  filter(parameter == "EV sales") %>%
+  group_by(powertrain) %>%
+  summarize(total_sales = sum(value)) %>%
+  ungroup() %>%
+  mutate(percentage = total_sales / sum(total_sales) * 100)  # Compute percentage
+
+# Reorder powertrain factor based on total_sales in descending order
+ev_sales_world_data <- ev_sales_world_data %>%
+  mutate(powertrain = fct_reorder(powertrain, total_sales, .desc = TRUE))
+
+# Create a bar chart for EV sales distribution by powertrain type
+ev_sales_bar_chart <- ggplot(ev_sales_world_data, aes(x = powertrain, y = total_sales, fill = powertrain)) +
+  geom_bar(stat = "identity") +  # Use geom_bar for a bar chart
+  scale_fill_brewer(palette = "Set3") +  # Set color palette
+  labs(title = "Worldwide Distribution of EV Sales by Powertrain Type",
+       x = "Powertrain Type",
+       y = "Total Sales") +
+  geom_text(aes(label = paste0(round(percentage, 1), "%")),  # Add labels with percentages
+            position = position_stack(vjust = 0.5), size = 5) +  # Adjust label position and size
+  theme_minimal()  # Use a minimal theme for a clean look
+
+# Plot the bar chart
+print(ev_sales_bar_chart)
+```
+@fig-barchart shows that BEVs account for 81.3% of global EV sales, followed by PHEVs at 17.9%, and FCEVs at 0.8%. This distribution indicates a strong market inclination towards battery-powered vehicles, likely due to improvements in battery technology, range, and cost reductions.
+
+## EV Sales Share by Grouped Region and Powertrain
+```{r}
+#| label: fig-stackbarchart
+#| fig-cap: EV Sales Share by Grouped Region and Powertrain
+# Prepare the dataset by grouping and summarizing the data
+ev_sales_share_data <- ev_data %>%
+  filter(parameter == "EV sales",Grouped_Region != "World") %>%  # Filter for EV sales data
+  group_by(Grouped_Region, powertrain) %>%  # Group by region and powertrain type
+  summarize(total_sales = sum(value, na.rm = TRUE)) %>%  # Calculate total sales for each combination
+  ungroup() %>%
+  group_by(Grouped_Region) %>%  # Regroup by region to calculate share within each region
+  mutate(sales_share = total_sales / sum(total_sales) * 100) %>%  # Calculate sales share as a percentage
+  ungroup()
+
+# Reorder regions and powertrain factors for better visualization
+ev_sales_share_data <- ev_sales_share_data %>%
+  mutate(Grouped_Region = fct_reorder(Grouped_Region, -sales_share),  # Reorder regions based on sales share
+         powertrain = fct_reorder(powertrain, sales_share, .desc = TRUE))  # Reorder powertrain types
+
+# Create a bar chart to visualize the sales share by grouped region and powertrain
+ev_sales_share_plot <- ggplot(ev_sales_share_data, aes(x = Grouped_Region, y = sales_share, fill = powertrain)) +
+  geom_bar(stat = "identity", position = "stack") +  # Use dodge position to place bars side by side
+  scale_fill_brewer(palette = "Set1") +  # Set color palette
+  labs(title = "EV Sales Share by Grouped Region and Powertrain",
+       x = "Grouped Region",
+       y = "EV Sales Share (%)") +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +  # Formatting y-axis as percentage
+  theme_minimal() +  # Use a minimal theme for a clean look
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis text for better readability
+
+# Plot the bar chart
+print(ev_sales_share_plot)
+
+```
+@fig-stackbarchart shows that Battery Electric Vehicles (BEVs) dominate the EV market across all regions, with particularly high shares in China, North America, and Australia.Plug-in Hybrid Electric Vehicles (PHEVs) have a significant presence in Europe, UK and South America.Fuel Cell Electric Vehicles (FCEVs) have a minimal market share globally, indicating limited adoption. Overall, the preference for BEVs is strong worldwide, though regional variations in powertrain preferences are evident.
+
+# Conclusion
+The analysis aimed to explore the growth and distribution of global Electric Vehicle (EV) sales from 2010 to 2024, as well as predicted data up to 2035. This review focused on identifying trends over time, understanding regional distribution, and examining powertrain preferences. These insights are essential for stakeholders in the automotive and energy sectors to adapt to the rapid shift towards electrification in the transportation industry.
+
+## Key findings
+ 
+- Sales Growth: There has been a significant increase in global EV sales, particularly since 2018, driven by advancements in technology and government incentives.
+
+- Powertrain Preferences: BEVs dominate the market, while PHEVs hold a notable share in specific regions like South America and Europe, and FCEVs have limited presence.
+
+- Regional Leadership: China, North America, and Europe are leading the charge in EV adoption, each exhibiting unique trends and preferences.
+
+### Further improvements
+For further improvements, more granular data on different vehicle models and manufacturers could be included to provide deeper insights into market dynamics.
+Move over,more detailed long-term forecasts could be included to enhance understanding of future market trends.Last but not least, data on consumer preferences and behavior could be incorporated to provide additional context for the observed trends and market shares.
+
+## Reference
+1.Grigoroudis, E., & Karkazis, S. (2020). Evaluating the economic impact of electric vehicle adoption on the energy sector using a system dynamics approach. *Journal of Cleaner Production, 275*, 122840. https://doi.org/10.1016/j.jclepro.2020.122840
+
+2.International Energy Agency. (2024). *Global EV outlook 2024*. IEA. https://www.iea.org/reports/global-ev-outlook-2024. Licence: CC BY 4.0
 

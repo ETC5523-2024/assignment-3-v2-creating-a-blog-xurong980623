@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ETC5523 Blog Assessment",
+    "section": "",
+    "text": "Blog Post: Global Electric Vehicle (EV) Sales Trends Published on: [Date] Author: [Your Name]"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I’m a passionate data scientist and currently pursuing my degree in Business Analytics at Monash University. My focus is on using data to solve complex real-world problems, particularly in the areas of machine learning, time series analysis, and data visualization. I have experience in:\n\nR programming and data wrangling\nPredictive modeling using machine learning techniques\nTime series analysis and forecasting\nData visualization with ggplot2 and interactive dashboards\n\nWhen I’m not coding, I enjoy exploring new tech trends, reading, and contributing to open-source projects. Feel free to check out my projects on GitHub or connect with me on LinkedIn.\n\n\n\nYou can find me on:\n\nGitHub: My GitHub Profile\nLinkedIn: My LinkedIn Profile\nTwitter: My Twitter Handle"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Global Electric Vehicle (EV) Sales Trends",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!"
+  },
+  {
+    "objectID": "about.html#hi-im-sharon-xu",
+    "href": "about.html#hi-im-sharon-xu",
+    "title": "About Me",
+    "section": "",
+    "text": "I’m a passionate data scientist and currently pursuing my degree in Business Analytics at Monash University. My focus is on using data to solve complex real-world problems, particularly in the areas of machine learning, time series analysis, and data visualization. I have experience in:\n\nR programming and data wrangling\nPredictive modeling using machine learning techniques\nTime series analysis and forecasting\nData visualization with ggplot2 and interactive dashboards\n\nWhen I’m not coding, I enjoy exploring new tech trends, reading, and contributing to open-source projects. Feel free to check out my projects on GitHub or connect with me on LinkedIn.\n\n\n\nYou can find me on:\n\nGitHub: My GitHub Profile\nLinkedIn: My LinkedIn Profile\nTwitter: My Twitter Handle"
+  },
+  {
+    "objectID": "about.html#biography",
+    "href": "about.html#biography",
+    "title": "About Me",
+    "section": "Biography",
+    "text": "Biography\nHello! My name is Rong Xu, and I am currently studying Business Analytics at Monash University. I am passionate about data science, machine learning, and how we can use data to drive impactful decision-making. I am originally from China, and I enjoy working on projects related to data visualization, air quality, and more.\nIn my free time, I love exploring new technologies, reading, and learning new skills. You can find some of my personal projects on my GitHub, or connect with me on LinkedIn."
+  },
+  {
+    "objectID": "index.html#sec-summary",
+    "href": "index.html#sec-summary",
+    "title": "ETC5523 Blog Assessment",
+    "section": "Executive Summary",
+    "text": "Executive Summary\nThe report analyzes the rapid growth and regional dynamics of the global Electric Vehicles(EV) market from 2010 to 2024. China’s leadership, the dominance of Battery Electric Vehicles (BEVs), the significant growth in North America and the different region preferences of adoptions are key trends.These insights are critical for stakeholders in the automotive and energy sectors to understand and leverage the ongoing shifts in the EV market."
+  },
+  {
+    "objectID": "index.html#sec-introduction",
+    "href": "index.html#sec-introduction",
+    "title": "ETC5523 Blog Assessment",
+    "section": "Introduction to the Problem",
+    "text": "Introduction to the Problem\nElectric vehicles are increasingly considered a viable solution to reduce greenhouse gas emissions and dependency on fossil fuels. Understanding the trends in global EV sales, including which regions and powertrains are leading the market, can provide valuable insights for stakeholders in the automotive and energy sectors. This report analyzes data from 2010 to 2024 to identify key patterns, regional leaders, and the primary drivers behind the adoption of electric vehicles globally."
+  },
+  {
+    "objectID": "index.html#sec-results",
+    "href": "index.html#sec-results",
+    "title": "ETC5523 Blog Assessment",
+    "section": "Key Results",
+    "text": "Key Results\n\nEV Sales Over Time by Grouped Region\n\n\n\n\n\n\n\n\nFigure 1: EV Sales Over Time by Grouped Region\n\n\n\n\n\nFrom Figure 1, we can find that the sales of EVs have shown a substantial increase globally since 2010, with a sharp uptick starting around 2018. China has consistently led the market, followed by North America and Europe. This growth is primarily driven by government incentives, advancements in EV technology, and increased environmental awareness among consumers.\n\n\nWorldwide Distribution of EV Sales by Powertrain Type\n\n\n\n\n\n\n\n\nFigure 2: Worldwide Distribution of EV Sales by Powertrain Type\n\n\n\n\n\nFigure 2 shows that BEVs account for 81.3% of global EV sales, followed by PHEVs at 17.9%, and FCEVs at 0.8%. This distribution indicates a strong market inclination towards battery-powered vehicles, likely due to improvements in battery technology, range, and cost reductions.\n\n\nEV Sales Share by Grouped Region and Powertrain\n\n\n\n\n\n\n\n\nFigure 3: EV Sales Share by Grouped Region and Powertrain\n\n\n\n\n\nFigure 3 shows that Battery Electric Vehicles (BEVs) dominate the EV market across all regions, with particularly high shares in China, North America, and Australia.Plug-in Hybrid Electric Vehicles (PHEVs) have a significant presence in Europe, UK and South America.Fuel Cell Electric Vehicles (FCEVs) have a minimal market share globally, indicating limited adoption. Overall, the preference for BEVs is strong worldwide, though regional variations in powertrain preferences are evident."
+  },
+  {
+    "objectID": "index.html#brief-methods",
+    "href": "index.html#brief-methods",
+    "title": "ETC5523 Blog Assessment",
+    "section": "Brief Methods",
+    "text": "Brief Methods\n\nData Source:\nThe data used for this analysis is sourced from website.This dataset provides a comprehensive overview of EV sales across different regions,powertrains and time periods.I custom region grouping that aggregates countries into broader regions for clearer analysis.Further more,in the stacked bar chart below, future sales data is flagged as “Predicted” and displayed with reduced opacity, highlighting the distinction between historical and forecasted data.\n\n\nData Dictionary:\n\nYear: Year of EV sales.\nCategory: Historical vs predicted sales figures.\nParamater: include 4 categories: EV sales,EV sales share,EV stock,EV stock share.\nRegion: Countries where sales occurred.\nPowertrain: Type of electric vehicle (BEV, PHEV, FCEV).\nValue: Number of sales sold in a given year and region."
+  },
+  {
+    "objectID": "index.html#conclusion",
+    "href": "index.html#conclusion",
+    "title": "ETC5523 Blog Assessment",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe above analysis involved a comprehensive review of EV sales data from 2010 to 2024 as well as the some of the predicted data from 2024 to 2035 focusing on trends over time, regional distribution, and powertrain types.\n\nKey findings\n\nSales Growth: There has been a significant increase in global EV sales, particularly since 2018, driven by advancements in technology and government incentives.\nPowertrain Preferences: BEVs dominate the market, while PHEVs hold a notable share in specific regions like South America and Europe, and FCEVs have limited presence.\nRegional Leadership: China, North America, and Europe are leading the charge in EV adoption, each exhibiting unique trends and preferences.\n\n\n\nFurther improvements\nFor further improvements, more granular data on different vehicle models and manufacturers could be included to provide deeper insights into market dynamics. Move over,more detailed long-term forecasts could be included to enhance understanding of future market trends.Last but not least, data on consumer preferences and behavior could be incorporated to provide additional context for the observed trends and market shares."
+  },
+  {
+    "objectID": "index.html#reference",
+    "href": "index.html#reference",
+    "title": "ETC5523 Blog Assessment",
+    "section": "Reference",
+    "text": "Reference\n1.Grigoroudis, E., & Karkazis, S. (2020). Evaluating the economic impact of electric vehicle adoption on the energy sector using a system dynamics approach. Journal of Cleaner Production, 275, 122840. https://doi.org/10.1016/j.jclepro.2020.122840\n2.International Energy Agency. (2024). Global EV outlook 2024. IEA. https://www.iea.org/reports/global-ev-outlook-2024. Licence: CC BY 4.0"
+  },
+  {
+    "objectID": "posts/welcome/index.html#sec-summary",
+    "href": "posts/welcome/index.html#sec-summary",
+    "title": "Global Electric Vehicle (EV) Sales Trends",
+    "section": "Executive Summary",
+    "text": "Executive Summary\nThe report analyzes the rapid growth and regional dynamics of the global Electric Vehicles(EV) market from 2010 to 2024. China’s leadership, the dominance of Battery Electric Vehicles (BEVs), the significant growth in North America and the different region preferences of adoptions are key trends.These insights are critical for stakeholders in the automotive and energy sectors to understand and leverage the ongoing shifts in the EV market."
+  },
+  {
+    "objectID": "posts/welcome/index.html#sec-introduction",
+    "href": "posts/welcome/index.html#sec-introduction",
+    "title": "Global Electric Vehicle (EV) Sales Trends",
+    "section": "Introduction to the Problem",
+    "text": "Introduction to the Problem\nElectric vehicles are increasingly considered a viable solution to reduce greenhouse gas emissions and dependency on fossil fuels. Understanding the trends in global EV sales, including which regions and powertrains are leading the market, can provide valuable insights for stakeholders in the automotive and energy sectors. This report analyzes data from 2010 to 2024 to identify key patterns, regional leaders, and the primary drivers behind the adoption of electric vehicles globally."
+  },
+  {
+    "objectID": "posts/welcome/index.html#sec-results",
+    "href": "posts/welcome/index.html#sec-results",
+    "title": "Global Electric Vehicle (EV) Sales Trends",
+    "section": "Key Results",
+    "text": "Key Results\n\nEV Sales Over Time by Grouped Region\n\n\n\n\n\n\n\n\nFigure 1: EV Sales Over Time by Grouped Region\n\n\n\n\n\nFrom Figure 1, we can find that the sales of EVs have shown a substantial increase globally since 2010, with a sharp uptick starting around 2018. China has consistently led the market, followed by North America and Europe. This growth is primarily driven by government incentives, advancements in EV technology, and increased environmental awareness among consumers.\n\n\nWorldwide Distribution of EV Sales by Powertrain Type\n\n\n\n\n\n\n\n\nFigure 2: Worldwide Distribution of EV Sales by Powertrain Type\n\n\n\n\n\nFigure 2 shows that BEVs account for 81.3% of global EV sales, followed by PHEVs at 17.9%, and FCEVs at 0.8%. This distribution indicates a strong market inclination towards battery-powered vehicles, likely due to improvements in battery technology, range, and cost reductions.\n\n\nEV Sales Share by Grouped Region and Powertrain\n\n\n\n\n\n\n\n\nFigure 3: EV Sales Share by Grouped Region and Powertrain\n\n\n\n\n\nFigure 3 shows that Battery Electric Vehicles (BEVs) dominate the EV market across all regions, with particularly high shares in China, North America, and Australia.Plug-in Hybrid Electric Vehicles (PHEVs) have a significant presence in Europe, UK and South America.Fuel Cell Electric Vehicles (FCEVs) have a minimal market share globally, indicating limited adoption. Overall, the preference for BEVs is strong worldwide, though regional variations in powertrain preferences are evident."
+  },
+  {
+    "objectID": "posts/welcome/index.html#brief-methods",
+    "href": "posts/welcome/index.html#brief-methods",
+    "title": "Global Electric Vehicle (EV) Sales Trends",
+    "section": "Brief Methods",
+    "text": "Brief Methods\n\nData Source:\nThe data used for this analysis is sourced from website.This dataset provides a comprehensive overview of EV sales across different regions,powertrains and time periods.I custom region grouping that aggregates countries into broader regions for clearer analysis.Further more,in the stacked bar chart below, future sales data is flagged as “Predicted” and displayed with reduced opacity, highlighting the distinction between historical and forecasted data.\n\n\nData Dictionary:\n\nYear: Year of EV sales.\nCategory: Historical vs predicted sales figures.\nParamater: include 4 categories: EV sales,EV sales share,EV stock,EV stock share.\nRegion: Countries where sales occurred.\nPowertrain: Type of electric vehicle (BEV, PHEV, FCEV).\nValue: Number of sales sold in a given year and region."
+  },
+  {
+    "objectID": "posts/welcome/index.html#conclusion",
+    "href": "posts/welcome/index.html#conclusion",
+    "title": "Global Electric Vehicle (EV) Sales Trends",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe above analysis involved a comprehensive review of EV sales data from 2010 to 2024 as well as the some of the predicted data from 2024 to 2035 focusing on trends over time, regional distribution, and powertrain types.\n\nKey findings\n\nSales Growth: There has been a significant increase in global EV sales, particularly since 2018, driven by advancements in technology and government incentives.\nPowertrain Preferences: BEVs dominate the market, while PHEVs hold a notable share in specific regions like South America and Europe, and FCEVs have limited presence.\nRegional Leadership: China, North America, and Europe are leading the charge in EV adoption, each exhibiting unique trends and preferences.\n\n\n\nFurther improvements\nFor further improvements, more granular data on different vehicle models and manufacturers could be included to provide deeper insights into market dynamics. Move over,more detailed long-term forecasts could be included to enhance understanding of future market trends.Last but not least, data on consumer preferences and behavior could be incorporated to provide additional context for the observed trends and market shares."
+  },
+  {
+    "objectID": "posts/welcome/index.html#reference",
+    "href": "posts/welcome/index.html#reference",
+    "title": "Global Electric Vehicle (EV) Sales Trends",
+    "section": "Reference",
+    "text": "Reference\n1.Grigoroudis, E., & Karkazis, S. (2020). Evaluating the economic impact of electric vehicle adoption on the energy sector using a system dynamics approach. Journal of Cleaner Production, 275, 122840. https://doi.org/10.1016/j.jclepro.2020.122840\n2.International Energy Agency. (2024). Global EV outlook 2024. IEA. https://www.iea.org/reports/global-ev-outlook-2024. Licence: CC BY 4.0"
+  }
+]
