@@ -4,8 +4,7 @@ author: "Rong Xu"
 date: "2024-10-1"
 categories: [blog]
 ---
-
-Welcome to my first Quarto blog post! 
+Welcome to my first Quarto blog post!
 In this post, we’ll explore the global trends in electric vehicle (EV) adoption and see which regions are driving the shift to cleaner transportation.
 
 ![](thumbnail.jpg)

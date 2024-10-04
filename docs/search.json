@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "A Passionate Data Explorer",
+    "section": "",
+    "text": "Electric Vehicles (EVs): Who’s Leading the Charge and What’s the Trending?\n\n\n\n\n\n\nblog\n\n\n\n\n\n\n\n\n\nOct 1, 2024\n\n\nRong Xu\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Electric Vehicles (EVs): Who’s Leading the Charge and What’s the Trending?",
+    "section": "",
+    "text": "Welcome to my first Quarto blog post! In this post, we’ll explore the global trends in electric vehicle (EV) adoption and see which regions are driving the shift to cleaner transportation."
+  },
+  {
+    "objectID": "posts/welcome/index.html#data-source",
+    "href": "posts/welcome/index.html#data-source",
+    "title": "Electric Vehicles (EVs): Who’s Leading the Charge and What’s the Trending?",
+    "section": "Data Source:",
+    "text": "Data Source:\nTo get a comprehensive view of global EV sales, we used data from the website,tracking sales by region and vehicle type. The dataset includes actual sales data from 2010 to 2024 and forecasted data up to 2035, providing a detailed picture of both historical and predicted trends. To simplify the analysis, we grouped individual countries into broader regions like North America and Europe. Predicted sales were flagged separately for easy distinction."
+  },
+  {
+    "objectID": "posts/welcome/index.html#variables-in-the-dataset",
+    "href": "posts/welcome/index.html#variables-in-the-dataset",
+    "title": "Electric Vehicles (EVs): Who’s Leading the Charge and What’s the Trending?",
+    "section": "Variables in the Dataset",
+    "text": "Variables in the Dataset\nThe dataset includes several variables that track EV sales across different regions and vehicle types:\n\nYear: Year of EV sales.\nCategory: Historical vs predicted sales figures.\nParamater: include 4 categories: EV sales,EV sales share,EV stock,EV stock share.\nRegion: Countries where sales occurred.\nPowertrain: Type of electric vehicle (BEV, PHEV, FCEV).\nValue: Number of sales sold in a given year and region."
+  },
+  {
+    "objectID": "posts/welcome/index.html#data-cleaning-steps",
+    "href": "posts/welcome/index.html#data-cleaning-steps",
+    "title": "Electric Vehicles (EVs): Who’s Leading the Charge and What’s the Trending?",
+    "section": "Data Cleaning Steps",
+    "text": "Data Cleaning Steps\nBefore jumping into the analysis, we had to clean up the data. Here’s how:\n\nGroup by Region: We combined individual countries into larger regions like North America and Europe to highlight broader trends. (e.g., combining the USA, Canada, and Mexico into “North America”).\nHandling Missing or Invalid Data: Any missing or inaccurate data was removed to ensure accuracy. Predicted sales data was flagged so we could easily distinguish it from actual historical sales.\nStandardized Year Format: The “Year” column was formatted as a numeric variable for better analysis, and later converted back to a categorical format for clear visualizations.\n\nThe code below demonstrates these data cleaning steps:\n\n\nCode\nev_data &lt;- read_csv(\"data/IEA Global EV Data 2024.csv\")\n\n# Define region groups\nregion_mapping &lt;- function(region) {\n  if (region %in% c(\"USA\", \"Canada\", \"Mexico\")) {\n    return(\"North America\")\n  } else if (region %in% c(\"Brazil\", \"Argentina\", \"Chile\", \"Colombia\", \"Peru\")) {\n    return(\"South America\")\n  } else if (region == \"China\") {\n    return(\"China\")\n  } else if (region %in% c(\"UK\", \"United Kingdom\")) {\n    return(\"UK\")\n  } else if (region %in% c(\"Germany\", \"France\", \"Italy\", \"Spain\", \"Netherlands\", \"Belgium\", \"Sweden\", \"Norway\", \"Finland\", \"Denmark\", \"Switzerland\", \"Austria\", \"Ireland\", \"Portugal\", \"Greece\", \"Luxembourg\", \"Poland\", \"Czech Republic\", \"Hungary\", \"Slovakia\", \"Slovenia\")) {\n    return(\"Europe\")\n  } else if (region %in% c(\"Australia\", \"New Zealand\")) {\n    return(\"Australia\")\n  } else if (region %in% c(\"Bulgaria\", \"Costa Rica\", \"Croatia\", \"Cyprus\", \"Estonia\", \"Iceland\", \"India\", \"Indonesia\", \"Israel\", \"Japan\", \"Korea\", \"Latvia\", \"Lithuania\", \"Romania\", \"Seychelles\", \"South Africa\", \"Thailand\", \"Turkiye\", \"United Arab Emirates\")) {\n    return(\"Other\")\n  } else if (region == \"World\") {\n    return(\"World\")\n  } else {\n    return(NA)\n  }\n}\n\n# Apply region groups to the dataset and filter out NAs\nev_data &lt;- ev_data |&gt;\n  mutate(Grouped_Region = sapply(region, region_mapping)) |&gt;\n  filter(!is.na(Grouped_Region))\n\n# Convert 'year' to numeric for comparison and back to factor for plotting\nev_data &lt;- ev_data |&gt;\n  mutate(year = as.numeric(as.character(year)))\n\n# Create a summary table of the grouped regions and their countries\ngrouped_regions_summary &lt;- ev_data |&gt;\n  distinct(region, Grouped_Region) |&gt;\n  group_by(Grouped_Region) |&gt;\n  summarize(Countries = paste(unique(region), collapse = \", \")) |&gt;\n  ungroup()\n\n\nAfter completing these steps, we ensured that the dataset was ready for further analysis, making it easier to observe key patterns in EV sales and regional trends. This data cleaning process not only improved the accuracy of the analysis but also made the visualizations much clearer and easier to interpret."
+  },
+  {
+    "objectID": "posts/welcome/index.html#ev-sales-have-soared-since-2010",
+    "href": "posts/welcome/index.html#ev-sales-have-soared-since-2010",
+    "title": "Electric Vehicles (EVs): Who’s Leading the Charge and What’s the Trending?",
+    "section": "EV Sales Have Soared Since 2010",
+    "text": "EV Sales Have Soared Since 2010\nThis stacked bar chart Figure 1 illustrates how different regions are contributing to the global rise of EVs.It also shows the rise of EV sales globally from 2010 to 2024, with predictions through 2035. The data highlights a significant increase in EV sales since 2018, driven largely by growing government incentives and technological advancements.The reduced opacity in the chart represents predicted sales, showing that this trend is expected to continue upward for the next decade.\n\n\n\n\n\n\n\n\nFigure 1: EV Sales Over Time by Grouped Region\n\n\n\n\n\nThis table Table 1 clearly shows the market share of EV sales by region respectively. China is a clear leader, with North America and Europe following closely behind.\n\n\n\n\nTable 1: EV Sales market share by Grouped Region(total)\n\n\n\n\n\n\n\nGrouped_Region\nTotal_Sales\nMarket_Share(%)\n\n\n\n\nChina\n61755388\n70.2\n\n\nNorth America\n12049284\n13.7\n\n\nEurope\n9910450\n11.3\n\n\nOther\n2206229\n2.5\n\n\nUK\n1659853\n1.9\n\n\nAustralia\n286339\n0.3\n\n\nSouth America\n114660\n0.1"
+  },
+  {
+    "objectID": "posts/welcome/index.html#the-dominance-of-bevs",
+    "href": "posts/welcome/index.html#the-dominance-of-bevs",
+    "title": "Electric Vehicles (EVs): Who’s Leading the Charge and What’s the Trending?",
+    "section": "The Dominance of BEVs",
+    "text": "The Dominance of BEVs\nWhen we look at global EV sales by powertrain type, it’s clear that Battery Electric Vehicles (BEVs) are the favorite. BEVs account for a whopping 81.3% of all EV sales worldwide, while Plug-in Hybrid Electric Vehicles (PHEVs) make up 17.9%, and Fuel Cell Electric Vehicles (FCEVs) are at a distant 0.8%.\n\n\n\n\n\n\n\n\nFigure 2: Worldwide Distribution of EV Sales by Powertrain Type\n\n\n\n\n\nFigure 2 shows that shows that BEVs are the most popular choice across the globe. The strong market preference for BEVs is driven by improvements in battery technology, lower costs, and better range."
+  },
+  {
+    "objectID": "posts/welcome/index.html#regional-differences-in-powertrain-preferences",
+    "href": "posts/welcome/index.html#regional-differences-in-powertrain-preferences",
+    "title": "Electric Vehicles (EVs): Who’s Leading the Charge and What’s the Trending?",
+    "section": "Regional Differences in Powertrain Preferences",
+    "text": "Regional Differences in Powertrain Preferences\nAlthough BEVs dominate globally, regional preferences vary. Figure 3 shows the EV sales share by region and powertrain type. For example, PHEVs have a larger presence in Europe and South America compared to other regions, while FCEVs struggle to gain traction anywhere.It also highlights how different regions favor different types of EVs. China and North America have an overwhelming preference for BEVs, while Europe and South America also show interest in PHEVs.\n\n\n\n\n\n\n\n\nFigure 3: EV Sales Share by Grouped Region and Powertrain"
+  }
+]

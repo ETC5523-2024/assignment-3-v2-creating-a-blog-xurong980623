@@ -10,9 +10,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #2E8B57; /* Sea green for headings to contrast with the coral */
 }
 
-/* Customize the body background */
+/* Customize the body background and make the text color darker */
 body {
   background-color: #FFF8DC; /* Light beige background for warmth and readability */
+  color: #333333; /* Darker font color for better readability */
 }
 
 /* Customize link color */
@@ -22,6 +23,13 @@ a {
 
 a:hover {
   color: #FF4500; /* Darker orange-red for a bold hover effect */
+}
+
+/* Make author name bigger */
+.author-name {
+  font-size: 2.5em; /* Increase the font size of the author name */
+  font-weight: bold; /* Make it bold for emphasis */
+  color: #2E8B57; /* Sea green for consistency with headings */
 }
 
 /* Footer styling */
