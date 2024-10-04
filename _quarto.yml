@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Rong Xu"
@@ -16,6 +17,11 @@ format:
   html:
     theme: cosmo
     css: styles.css
+
+links:
+  - icon: github
+    href: https://github.com/xurong980623
+
 
 
 
